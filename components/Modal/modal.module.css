@@ -1,0 +1,17 @@
+.dialog {
+  text-align: center;
+  position: absolute;
+  margin: 0;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 16px;
+  background-color: white;
+}
+
+.backdrop {
+  width: 100%;
+  background-color: #4e5052a1;
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
