@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
-import { IStudent } from "../../pages/students";
+import { IStudent } from "../../store/students";
 
 interface Props {
   student: IStudent;

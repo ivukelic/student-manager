@@ -5,7 +5,7 @@ interface Props {
   label: string;
   options: string[];
   value: string;
-  onChange: () => void;
+  onChange: (option: any) => void;
 }
 
 const Selector: React.FC<Props> = ({

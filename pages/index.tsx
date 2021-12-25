@@ -2,17 +2,22 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { studentData } from "./students";
+import { studentData } from "../store/students";
 import { useEffect, useState } from "react";
 import Button from "../components/Button/Button";
 import InputField from "../components/InputField/InputField";
 import { Table, IHeader } from "../components/Table/Table";
 import Selector from "../components/Selector/Selector";
+import store from "../store/store";
+import { observer } from "mobx-react";
+
 const Home: NextPage = () => {
   // TODO : we probz don't need this
   const [students, setStudents] = useState(studentData);
   const [classes, setClasses] = useState<string[]>(["squok"]);
   // const ddlOptions = ["m", "f", "x"];
+
+  const ObservedStudentTable = observer(Table);
 
   const header: IHeader[] = [
     { displayName: "Name", key: "name" },
@@ -40,13 +45,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Table header={header} body={students} />
+      <ObservedStudentTable header={header} body={store.students}>
+        <Table header={header} body={store.students} />
+      </ObservedStudentTable>
 
       <Button variant="text" onClick={() => console.log("butt")}>
         Ayooo it a butt
       </Button>
-      {/* <Selector options={ddlOptions} name="test" /> */}
-      {/* <Selector options={classes} name="classes" /> */}
     </div>
   );
 };

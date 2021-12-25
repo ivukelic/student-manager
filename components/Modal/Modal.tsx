@@ -7,7 +7,7 @@ import {
 import DeleteDialog from "../DeleteDialog/DeleteDialog";
 import EditDialog from "../EditDialog/EditDialog";
 import styles from "./modal.module.css";
-import { IStudent } from "../../pages/students";
+import { IStudent } from "../../store/students";
 import Image from "next/image";
 import pen from "../../public/pen.png";
 import trash from "../../public/trash.png";
