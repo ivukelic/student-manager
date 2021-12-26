@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import InputField from "../InputField/InputField";
 import Selector from "../Selector/Selector";
@@ -13,6 +13,10 @@ interface Props {
 const EditDialog: React.FC<Props> = ({ student, onClose }) => {
   const [studentCopy, setStudentCopy] = useState<IStudent>({ ...student });
   const [isError, setIsError] = useState<boolean>(false);
+
+  useEffect(() => {
+    setStudentCopy({ ...student });
+  }, [student]);
 
   const handleNameChange = (e: any) => {
     setIsError(false);

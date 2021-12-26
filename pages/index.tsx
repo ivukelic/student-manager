@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import React, { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Table, IHeader } from "../components/Table/Table";
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Search />
-      <ObservedStudentTable header={header} body={store.students} />
+      <ObservedStudentTable header={header} body={store.filtered} />
     </div>
   );
 };

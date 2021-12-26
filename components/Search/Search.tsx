@@ -6,6 +6,7 @@ import styles from "./Search.module.scss";
 
 const Search = () => {
   const [showDdl, setShowDdl] = useState(false);
+  const [searchedValue, setSearchedValue] = useState("");
 
   const escFunction = useCallback((event) => {
     if (event.keyCode === 27) {
@@ -29,15 +30,34 @@ const Search = () => {
     setShowDdl(false);
   };
 
+  const handleOnChange = (e: any) => {
+    setSearchedValue(e.target.value);
+    //onChange(e.target.value);
+  };
+
+  useEffect(() => {
+    store.searchStudents(searchedValue);
+  }, [searchedValue]);
+
+  //console.log(value);
+
   return (
     <div onBlur={handleOnfocusout}>
-      <InputField name="search" type="text" onClick={handleOnClick} />
+      <InputField
+        name="search"
+        type="text"
+        value={searchedValue}
+        onClick={handleOnClick}
+        onChange={handleOnChange}
+      />
       {/* {showDdl && ( */}
       <Selector
         name="class"
         value={""}
         options={store.classes}
-        onChange={() => {}}
+        onChange={(e) => {
+          setSearchedValue(e.target.value);
+        }}
         size={4}
         className={styles.dropdown}
       />
