@@ -2,21 +2,13 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { studentData } from "../store/students";
 import { useEffect, useState } from "react";
 import Button from "../components/Button/Button";
-import InputField from "../components/InputField/InputField";
 import { Table, IHeader } from "../components/Table/Table";
-import Selector from "../components/Selector/Selector";
 import store from "../store/store";
 import { observer } from "mobx-react";
 
 const Home: NextPage = () => {
-  // TODO : we probz don't need this
-  const [students, setStudents] = useState(studentData);
-  const [classes, setClasses] = useState<string[]>(["squok"]);
-  // const ddlOptions = ["m", "f", "x"];
-
   const ObservedStudentTable = observer(Table);
 
   const header: IHeader[] = [
@@ -25,17 +17,6 @@ const Home: NextPage = () => {
     { displayName: "Birthday", key: "birthdate" },
     { displayName: "Gender", key: "gender" },
   ];
-
-  // useEffect(() => {
-  //   students.some((obj) => {
-  //     Object.keys(obj).includes("class");
-  //     if (!classes.includes(obj.class)) {
-  //       console.log("FIX THIS", classes, obj.class);
-  //       // setClasses((newClasses) => [...newClasses, obj.class]);
-  //       setClasses(...classes, obj.class);
-  //     }
-  //   });
-  // }, [students, classes]);
 
   return (
     <div className={styles.container}>

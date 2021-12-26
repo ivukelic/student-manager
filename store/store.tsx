@@ -3,16 +3,17 @@ import { studentData, IStudent, IExchangeStudent } from "./students";
 
 class Store {
   students: (IStudent | IExchangeStudent)[] = studentData;
+  classes: string[] = [];
+  gender: string[] = ["m", "f", "x"];
 
   constructor() {
-    this.students.push({
-      id: 29,
-      name: "Ante Emil",
-      class: "1-AHELE",
-      birthdate: "2013-03-02",
-      gender: "m",
-    });
     makeAutoObservable(this);
+
+    this.students.forEach((student) => {
+      if (!this.classes.includes(student.class)) {
+        this.classes.push(student.class);
+      }
+    });
   }
 
   editStudent(newData: IStudent) {
