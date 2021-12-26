@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import InputField from "../InputField/InputField";
 import Selector from "../Selector/Selector";
@@ -22,6 +22,13 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
     }));
   };
 
+  const handleDateChange = (e: any) => {
+    setStudentCopy((prevState) => ({
+      ...prevState,
+      birthdate: e.target.value,
+    }));
+  };
+
   const handleGenderChange = (option: any) => {
     setStudentCopy((prevState) => ({
       ...prevState,
@@ -38,7 +45,6 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
 
   const submitChange = () => {
     if (studentCopy.name === "") {
-      alert("ayo");
       setIsError(true);
       return;
     }
@@ -51,11 +57,17 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
       <h2>Edit Sudent</h2>
       <form>
         <InputField
+          type="text"
           value={studentCopy.name}
           name="name"
           onChange={handleNameChange}
         />
-        {/* datepiccc */}
+        <InputField
+          type="date"
+          name="date"
+          value={studentCopy.birthdate}
+          onChange={handleDateChange}
+        />
         <Selector
           name="class"
           value={studentCopy.class}

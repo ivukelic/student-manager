@@ -13,12 +13,8 @@ const DeleteDialog: React.FC<Props> = ({ student, onClose, onDelete }) => {
     <div>
       <h2>Delete student</h2>
       <div>Do you really want to delete student {student.name}</div>
-      <Button variant="text" onClick={() => onClose()}>
-        Close
-      </Button>
-      <Button variant="text" onClick={() => onDelete(student.id)}>
-        Yes
-      </Button>
+      <Button onClick={() => onClose()}>Close</Button>
+      <Button onClick={() => onDelete(student.id)}>Yes</Button>
     </div>
   );
 };

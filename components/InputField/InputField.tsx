@@ -5,6 +5,7 @@ interface Props {
   className?: string;
   value?: string;
   name: string;
+  type: string;
   onChange?: (...args: any[]) => any;
 }
 
@@ -13,18 +14,13 @@ export const InputField: React.FC<Props> = ({
   className,
   value,
   name,
+  type,
   onChange,
 }) => {
-  //   const handleOnChange = (e: any) => {
-  //     if (onChange) {
-  //       onChange(e.target.vaule);
-  //     }
-  //     return null;
-  //   };
-
   return (
     <div>
       <input
+        type={type}
         name={name}
         placeholder={placeholder}
         onChange={onChange}
