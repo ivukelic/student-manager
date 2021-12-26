@@ -1,5 +1,5 @@
 import React from "react";
-import { IStudent, IExchangeStudent } from "../../store/students";
+import { IStudent, IExchangeStudent } from "../../pages/students";
 import Modal from "../Modal/Modal";
 
 export interface IHeader {
@@ -23,9 +23,8 @@ export const Table: React.FC<Props> = ({ header, body, className }) => {
     return header.find((v) => v.key === key) != null;
   };
 
-  const renderBody = () => {
-    console.log(body);
-    return body.map((row, index) => (
+  const renderBody = () =>
+    body.map((row, index) => (
       <tr key={index}>
         {Object.keys(row)
           .filter((value: string) => checkIfInHeader(value))
@@ -44,7 +43,6 @@ export const Table: React.FC<Props> = ({ header, body, className }) => {
         )}
       </tr>
     ));
-  };
 
   return (
     <div>

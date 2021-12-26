@@ -11,7 +11,16 @@ interface Props {
 }
 
 const EditDialog: React.FC<Props> = ({ student, onClose }) => {
-  const [studentCopy, setStudentCopy] = useState({ ...student });
+  const [studentCopy, setStudentCopy] = useState<IStudent>({ ...student });
+  const [isError, setIsError] = useState<boolean>(false);
+
+  const handleNameChange = (e: any) => {
+    setIsError(false);
+    setStudentCopy((prevState) => ({
+      ...prevState,
+      name: e.target.value,
+    }));
+  };
 
   const handleGenderChange = (option: any) => {
     setStudentCopy((prevState) => ({
@@ -28,6 +37,11 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
   };
 
   const submitChange = () => {
+    if (studentCopy.name === "") {
+      alert("ayo");
+      setIsError(true);
+      return;
+    }
     store.editStudent(studentCopy);
     onClose();
   };
@@ -36,7 +50,11 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
     <div>
       <h2>Edit Sudent</h2>
       <form>
-        <InputField value={student.name} name="name" />
+        <InputField
+          value={studentCopy.name}
+          name="name"
+          onChange={handleNameChange}
+        />
         {/* datepiccc */}
         <Selector
           name="class"
@@ -52,10 +70,9 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
           value={studentCopy.gender}
           onChange={handleGenderChange}
         />
-        <Button variant="text" onClick={onClose}>
-          Cancel
-        </Button>
-        <Button variant="text" onClick={submitChange}>
+        {isError && <div>You need to enter a name</div>}
+        <Button onClick={onClose}>Cancel</Button>
+        <Button disabled={isError} onClick={submitChange}>
           OK
         </Button>
       </form>

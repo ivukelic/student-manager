@@ -15,19 +15,19 @@ export const InputField: React.FC<Props> = ({
   name,
   onChange,
 }) => {
-  const handleOnChange = (e: any) => {
-    if (onChange) {
-      onChange(e.target.vaule);
-    }
-    return null;
-  };
+  //   const handleOnChange = (e: any) => {
+  //     if (onChange) {
+  //       onChange(e.target.vaule);
+  //     }
+  //     return null;
+  //   };
 
   return (
     <div>
       <input
         name={name}
         placeholder={placeholder}
-        onChange={handleOnChange}
+        onChange={onChange}
         value={value}
       />
     </div>
