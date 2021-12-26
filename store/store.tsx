@@ -21,6 +21,14 @@ class Store {
       this.students.findIndex((student) => student.id === newData.id)
     ] = newData;
   }
+
+  deleteStudent(studentId: number) {
+    const filteredStudents = this.students.filter(
+      (student) => student.id !== studentId
+    );
+    this.students.length = 0;
+    this.students.push(...filteredStudents);
+  }
 }
 
 const store = new Store();

@@ -5,7 +5,7 @@ import { IStudent } from "../../store/students";
 interface Props {
   student: IStudent;
   onClose: () => void;
-  onDelete: () => void;
+  onDelete: (studentId: number) => void;
 }
 
 const DeleteDialog: React.FC<Props> = ({ student, onClose, onDelete }) => {
@@ -16,7 +16,7 @@ const DeleteDialog: React.FC<Props> = ({ student, onClose, onDelete }) => {
       <Button variant="text" onClick={() => onClose()}>
         Close
       </Button>
-      <Button variant="text" onClick={() => onDelete()}>
+      <Button variant="text" onClick={() => onDelete(student.id)}>
         Yes
       </Button>
     </div>

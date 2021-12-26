@@ -1,23 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
-import Button from "../components/Button/Button";
 import { Table, IHeader } from "../components/Table/Table";
 import store from "../store/store";
 import { observer } from "mobx-react";
 
+const header: IHeader[] = [
+  { displayName: "Name", key: "name" },
+  { displayName: "Class", key: "class" },
+  { displayName: "Birthday", key: "birthdate" },
+  { displayName: "Gender", key: "gender" },
+];
+
+const ObservedStudentTable = observer(Table);
+
 const Home: NextPage = () => {
-  const ObservedStudentTable = observer(Table);
-
-  const header: IHeader[] = [
-    { displayName: "Name", key: "name" },
-    { displayName: "Class", key: "class" },
-    { displayName: "Birthday", key: "birthdate" },
-    { displayName: "Gender", key: "gender" },
-  ];
-
   return (
     <div className={styles.container}>
       <Head>
@@ -26,13 +23,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ObservedStudentTable header={header} body={store.students}>
-        <Table header={header} body={store.students} />
-      </ObservedStudentTable>
-
-      <Button variant="text" onClick={() => console.log("butt")}>
-        Ayooo it a butt
-      </Button>
+      <ObservedStudentTable header={header} body={store.students} />
     </div>
   );
 };

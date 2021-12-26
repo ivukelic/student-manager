@@ -7,10 +7,11 @@ import {
 import DeleteDialog from "../DeleteDialog/DeleteDialog";
 import EditDialog from "../EditDialog/EditDialog";
 import styles from "./modal.module.css";
-import { IStudent } from "../../store/students";
+import { IStudent, IExchangeStudent } from "../../store/students";
 import Image from "next/image";
 import pen from "../../public/pen.png";
 import trash from "../../public/trash.png";
+import store from "../../store/store";
 
 interface Props {
   variant: string;
@@ -24,8 +25,8 @@ const Modal: React.FC<Props> = ({ variant, student }) => {
     dialog.hide();
   };
 
-  const handleOnDelete = () => {
-    console.log("this needs to be done soon");
+  const handleOnDelete = (studentId: number) => {
+    store.deleteStudent(studentId);
     dialog.hide();
   };
 
@@ -51,7 +52,7 @@ const Modal: React.FC<Props> = ({ variant, student }) => {
             <DeleteDialog
               student={student}
               onClose={handleOnClose}
-              onDelete={handleOnDelete}
+              onDelete={() => handleOnDelete(student.id)}
             />
           )}
         </Dialog>
