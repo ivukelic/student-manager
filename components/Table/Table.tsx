@@ -1,5 +1,5 @@
 import React from "react";
-import { IStudent, IExchangeStudent } from "../../pages/students";
+import { IStudent, IExchangeStudent } from "../../store/students";
 import Modal from "../Modal/Modal";
 
 export interface IHeader {

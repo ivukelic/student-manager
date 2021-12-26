@@ -6,7 +6,9 @@ interface Props {
   value?: string;
   name: string;
   type: string;
+  onBlur?: () => void;
   onChange?: (...args: any[]) => any;
+  onClick?: () => void;
 }
 
 export const InputField: React.FC<Props> = ({
@@ -15,7 +17,9 @@ export const InputField: React.FC<Props> = ({
   value,
   name,
   type,
+  onBlur,
   onChange,
+  onClick,
 }) => {
   return (
     <div>
@@ -25,6 +29,9 @@ export const InputField: React.FC<Props> = ({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        onClick={onClick}
+        onBlur={onBlur}
+        autoComplete="off"
       />
     </div>
   );
