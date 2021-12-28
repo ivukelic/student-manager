@@ -40,8 +40,6 @@ const Search = () => {
     store.searchStudents(searchedValue);
   }, [searchedValue]);
 
-  //console.log(value);
-
   return (
     <div onBlur={handleOnfocusout}>
       <InputField

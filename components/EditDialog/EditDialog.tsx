@@ -66,12 +66,14 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
           value={studentCopy.name}
           name="name"
           onChange={handleNameChange}
+          label="Name"
         />
         <InputField
           type="date"
           name="date"
           value={studentCopy.birthdate}
           onChange={handleDateChange}
+          label="Birthdate"
         />
         <Selector
           name="class"

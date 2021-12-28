@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import React from "react";
+import styles from "./InputField.module.scss";
 
 interface Props {
   placeholder?: string;
@@ -6,6 +8,7 @@ interface Props {
   value?: string;
   name: string;
   type: string;
+  label?: string;
   onBlur?: () => void;
   onChange?: (...args: any[]) => any;
   onClick?: () => void;
@@ -17,12 +20,14 @@ export const InputField: React.FC<Props> = ({
   value,
   name,
   type,
+  label,
   onBlur,
   onChange,
   onClick,
 }) => {
   return (
     <div>
+      <div>{label}</div>
       <input
         type={type}
         name={name}
@@ -32,6 +37,7 @@ export const InputField: React.FC<Props> = ({
         onClick={onClick}
         onBlur={onBlur}
         autoComplete="off"
+        className={classNames(className, styles.input)}
       />
     </div>
   );

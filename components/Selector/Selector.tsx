@@ -21,7 +21,7 @@ const Selector: React.FC<Props> = ({
   onChange,
 }) => {
   return (
-    <>
+    <div>
       <div>{label}</div>
       <select
         className={classNames(className)}
@@ -36,7 +36,7 @@ const Selector: React.FC<Props> = ({
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
