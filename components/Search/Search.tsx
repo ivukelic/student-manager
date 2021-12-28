@@ -41,7 +41,7 @@ const Search = () => {
   }, [searchedValue]);
 
   return (
-    <div onBlur={handleOnfocusout}>
+    <div className={styles.container} onBlur={handleOnfocusout}>
       <InputField
         name="search"
         type="text"
