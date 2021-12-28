@@ -1,0 +1,40 @@
+.dialog {
+  text-align: center;
+  position: absolute;
+  margin: 0;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 16px;
+  background-color: white;
+  top: 30%;
+  left: 50%;
+  min-width: 400px;
+  margin-left: -200px;
+}
+
+.backdrop {
+  width: 100%;
+  background-color: #4e5052a1;
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
+
+@mixin disclosure($color, $hoverColor) {
+  background-color: $color;
+  border: unset;
+  cursor: pointer;
+  border-radius: 6px;
+  padding-top: 4px;
+  &:hover {
+    background-color: $hoverColor;
+  }
+}
+
+.deleteDisclosure {
+  @include disclosure(#fe5656, #e01a1a);
+}
+
+.editDisclosure {
+  @include disclosure(#4792f7, #217cf3);
+}

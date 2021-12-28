@@ -1,6 +1,7 @@
 import React from "react";
 import { IStudent, IExchangeStudent } from "../../store/students";
 import Modal from "../Modal/Modal";
+import styles from "./Table.module.scss";
 
 export interface IHeader {
   displayName: string;
@@ -25,7 +26,7 @@ export const Table: React.FC<Props> = ({ header, body, className }) => {
 
   const renderBody = () =>
     body.map((row, index) => (
-      <tr key={index}>
+      <tr key={index} className={styles.body}>
         {Object.keys(row)
           .filter((value: string) => checkIfInHeader(value))
           .map((key: string) => (
@@ -46,11 +47,11 @@ export const Table: React.FC<Props> = ({ header, body, className }) => {
 
   return (
     <div>
-      <table>
-        <thead>
-          <tr>{renderHeader()}</tr>
+      <table className={styles.table}>
+        <thead className={styles.header}>
+          <tr className={styles.headerItem}>{renderHeader()}</tr>
         </thead>
-        <tbody>{renderBody()}</tbody>
+        <tbody className={styles.body}>{renderBody()}</tbody>
       </table>
     </div>
   );

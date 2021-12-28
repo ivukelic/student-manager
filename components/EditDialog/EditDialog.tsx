@@ -4,6 +4,7 @@ import InputField from "../InputField/InputField";
 import Selector from "../Selector/Selector";
 import { IStudent } from "../../store/students";
 import store from "../../store/store";
+import styles from "./EditDialog.module.scss";
 
 interface Props {
   student: IStudent;
@@ -59,7 +60,7 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
   return (
     <div>
       <h2>Edit Sudent</h2>
-      <form>
+      <form className={styles.container}>
         <InputField
           type="text"
           value={studentCopy.name}

@@ -6,12 +6,13 @@ import {
 } from "reakit/Dialog";
 import DeleteDialog from "../DeleteDialog/DeleteDialog";
 import EditDialog from "../EditDialog/EditDialog";
-import styles from "./modal.module.css";
+import styles from "./Modal.module.scss";
 import { IStudent, IExchangeStudent } from "../../store/students";
 import Image from "next/image";
 import pen from "../../public/pen.png";
 import trash from "../../public/trash.png";
 import store from "../../store/store";
+import classNames from "classnames";
 
 interface Props {
   variant: string;
@@ -32,7 +33,13 @@ const Modal: React.FC<Props> = ({ variant, student }) => {
 
   return (
     <>
-      <DialogDisclosure {...dialog}>
+      <DialogDisclosure
+        className={classNames({
+          [styles.deleteDisclosure]: variant === "delete",
+          [styles.editDisclosure]: variant === "edit",
+        })}
+        {...dialog}
+      >
         {variant === "edit" ? (
           <Image src={pen} alt="edit" width={20} height={20} />
         ) : (

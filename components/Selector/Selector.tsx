@@ -6,8 +6,8 @@ interface Props {
   label?: string;
   options: string[];
   value: string;
-  size: number;
-  className: string;
+  size?: number;
+  className?: string;
   onChange: (option: any) => void;
 }
 

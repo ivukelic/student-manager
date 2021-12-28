@@ -12,6 +12,8 @@ const header: IHeader[] = [
   { displayName: "Class", key: "class" },
   { displayName: "Birthday", key: "birthdate" },
   { displayName: "Gender", key: "gender" },
+  { displayName: "", key: "edit" },
+  { displayName: "", key: "delete" },
 ];
 
 const ObservedStudentTable = observer(Table);

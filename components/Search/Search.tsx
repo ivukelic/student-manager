@@ -3,6 +3,7 @@ import InputField from "../InputField/InputField";
 import Selector from "../Selector/Selector";
 import store from "../../store/store";
 import styles from "./Search.module.scss";
+import classNames from "classnames";
 
 const Search = () => {
   const [showDdl, setShowDdl] = useState(false);
