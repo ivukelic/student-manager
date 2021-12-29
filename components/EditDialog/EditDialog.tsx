@@ -19,7 +19,7 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
     setStudentCopy({ ...student });
   }, [student]);
 
-  const handleNameChange = (e: any) => {
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsError(false);
     setStudentCopy((prevState) => ({
       ...prevState,
@@ -27,7 +27,7 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
     }));
   };
 
-  const handleDateChange = (e: any) => {
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStudentCopy((prevState) => ({
       ...prevState,
       birthdate: e.target.value,
@@ -41,7 +41,7 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
     }));
   };
 
-  const handleClassChange = (option: any) => {
+  const handleClassChange = (option: React.ChangeEvent<HTMLSelectElement>) => {
     setStudentCopy((prevState) => ({
       ...prevState,
       class: option.target.value,

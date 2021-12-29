@@ -6,8 +6,8 @@ import styles from "./Search.module.scss";
 import classNames from "classnames";
 
 const Search = () => {
-  const [showDdl, setShowDdl] = useState(false);
-  const [searchedValue, setSearchedValue] = useState("");
+  const [showDdl, setShowDdl] = useState<boolean>(false);
+  const [searchedValue, setSearchedValue] = useState<string>("");
 
   const escFunction = useCallback((event) => {
     if (event.keyCode === 27) {
@@ -31,7 +31,7 @@ const Search = () => {
     setShowDdl(false);
   };
 
-  const handleOnChange = (e: any) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchedValue(e.target.value);
     //onChange(e.target.value);
   };
@@ -54,7 +54,7 @@ const Search = () => {
         name="class"
         value={""}
         options={store.classes}
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setSearchedValue(e.target.value);
         }}
         size={4}
