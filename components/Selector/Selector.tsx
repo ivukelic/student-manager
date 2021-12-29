@@ -10,6 +10,8 @@ interface Props {
   className?: string;
   hasHint?: boolean;
   onChange: (option: any) => void;
+  onBlur?: () => void;
+  onClick?: () => void;
 }
 
 const Selector = ({
@@ -20,15 +22,19 @@ const Selector = ({
   size,
   className,
   hasHint,
+  onBlur,
   onChange,
+  onClick,
 }: Props): JSX.Element => {
   return (
     <div>
       <div>{label}</div>
       <select
+        onBlur={onBlur}
         className={classNames(className)}
         name={name}
         onChange={onChange}
+        onClick={onClick}
         value={value}
         size={size}
       >

@@ -81,6 +81,7 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
           label="Class"
           options={store.classes}
           onChange={handleClassChange}
+          className={styles.classSelector}
         />
         <Selector
           name="gender"

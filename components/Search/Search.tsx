@@ -9,8 +9,8 @@ const Search = (): JSX.Element => {
   const [showDdl, setShowDdl] = useState<boolean>(false);
   const [searchedValue, setSearchedValue] = useState<string>("");
 
-  const escFunction = useCallback((event): void => {
-    if (event.keyCode === 27) {
+  const escFunction = useCallback((event: any): void => {
+    if (event.keyCode === 27 || event.keyCode === 13) {
       setShowDdl(false);
     }
   }, []);
@@ -23,27 +23,24 @@ const Search = (): JSX.Element => {
     };
   }, [escFunction]);
 
-  const handleOnClick = (): void => {
-    setShowDdl(true);
-  };
-
   const handleOnfocusout = (): void => {
     setShowDdl(false);
   };
 
+  const handleOnClick = (): void => {
+    setShowDdl(true);
+  };
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchedValue(e.target.value);
-    //onChange(e.target.value);
   };
 
   useEffect(() => {
     store.searchStudents(searchedValue);
   }, [searchedValue]);
 
-  console.log(store.classes);
-
   return (
-    <div className={styles.container} onBlur={handleOnfocusout}>
+    <div className={styles.container}>
       <InputField
         name="search"
         type="text"
@@ -51,19 +48,21 @@ const Search = (): JSX.Element => {
         onClick={handleOnClick}
         onChange={handleOnChange}
       />
-      {/* {showDdl && ( */}
-      <Selector
-        name="class"
-        hasHint
-        value={searchedValue}
-        options={store.classes}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setSearchedValue(e.target.value);
-        }}
-        size={4}
-        className={styles.dropdown}
-      />
-      {/* )} */}
+      {showDdl && (
+        <Selector
+          name="class"
+          hasHint
+          value={searchedValue}
+          options={store.classes}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearchedValue(e.target.value);
+          }}
+          size={4}
+          className={styles.dropdown}
+          onBlur={handleOnfocusout}
+          onClick={() => setShowDdl(false)}
+        />
+      )}
     </div>
   );
 };
