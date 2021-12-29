@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./InputField.module.scss";
 
 interface Props {
@@ -25,6 +25,14 @@ export const InputField: React.FC<Props> = ({
   onChange,
   onClick,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div>
       <div>{label}</div>
@@ -38,6 +46,7 @@ export const InputField: React.FC<Props> = ({
         onBlur={onBlur}
         autoComplete="off"
         className={classNames(className, styles.input)}
+        ref={inputRef}
       />
     </div>
   );

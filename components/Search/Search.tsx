@@ -3,7 +3,6 @@ import InputField from "../InputField/InputField";
 import Selector from "../Selector/Selector";
 import store from "../../store/store";
 import styles from "./Search.module.scss";
-import classNames from "classnames";
 
 const Search = (): JSX.Element => {
   const [showDdl, setShowDdl] = useState<boolean>(false);
@@ -44,6 +43,7 @@ const Search = (): JSX.Element => {
       <InputField
         name="search"
         type="text"
+        label="Filter by student name"
         value={searchedValue}
         onClick={handleOnClick}
         onChange={handleOnChange}
