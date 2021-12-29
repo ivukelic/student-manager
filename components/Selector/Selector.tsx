@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import styles from "./Selector.module.scss";
 
 interface Props {
   name: string;
@@ -39,7 +40,7 @@ const Selector = ({
         size={size}
       >
         {hasHint && (
-          <option selected disabled value="">
+          <option className={styles.hint} selected disabled value="">
             -or filter by class-
           </option>
         )}

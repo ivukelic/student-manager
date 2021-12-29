@@ -39,12 +39,12 @@ class Store {
     this.students.length = 0;
     this.students.push(...filteredStudents);
 
-    const filteredStudents2 = this.filtered.filter(
+    const filteredStudentsCopy = this.filtered.filter(
       (student) => student.id !== studentId
     );
 
     this.filtered.length = 0;
-    this.filtered.push(...filteredStudents2);
+    this.filtered.push(...filteredStudentsCopy);
   }
 
   searchStudents(searchedValue: string): void {
