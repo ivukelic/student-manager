@@ -5,11 +5,11 @@ import store from "../../store/store";
 import styles from "./Search.module.scss";
 import classNames from "classnames";
 
-const Search = () => {
+const Search = (): JSX.Element => {
   const [showDdl, setShowDdl] = useState<boolean>(false);
   const [searchedValue, setSearchedValue] = useState<string>("");
 
-  const escFunction = useCallback((event) => {
+  const escFunction = useCallback((event): void => {
     if (event.keyCode === 27) {
       setShowDdl(false);
     }
@@ -23,15 +23,15 @@ const Search = () => {
     };
   }, [escFunction]);
 
-  const handleOnClick = () => {
+  const handleOnClick = (): void => {
     setShowDdl(true);
   };
 
-  const handleOnfocusout = () => {
+  const handleOnfocusout = (): void => {
     setShowDdl(false);
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchedValue(e.target.value);
     //onChange(e.target.value);
   };
@@ -39,6 +39,8 @@ const Search = () => {
   useEffect(() => {
     store.searchStudents(searchedValue);
   }, [searchedValue]);
+
+  console.log(store.classes);
 
   return (
     <div className={styles.container} onBlur={handleOnfocusout}>
@@ -52,7 +54,8 @@ const Search = () => {
       {/* {showDdl && ( */}
       <Selector
         name="class"
-        value={""}
+        hasHint
+        value={searchedValue}
         options={store.classes}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setSearchedValue(e.target.value);

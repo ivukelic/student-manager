@@ -8,18 +8,20 @@ interface Props {
   value: string;
   size?: number;
   className?: string;
+  hasHint?: boolean;
   onChange: (option: any) => void;
 }
 
-const Selector: React.FC<Props> = ({
+const Selector = ({
   name,
   options,
   label,
   value,
   size,
   className,
+  hasHint,
   onChange,
-}) => {
+}: Props): JSX.Element => {
   return (
     <div>
       <div>{label}</div>
@@ -30,6 +32,11 @@ const Selector: React.FC<Props> = ({
         value={value}
         size={size}
       >
+        {hasHint && (
+          <option selected disabled value="">
+            -or filter by class-
+          </option>
+        )}
         {options.map((option) => (
           <option key={option} value={option}>
             {option}

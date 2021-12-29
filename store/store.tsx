@@ -22,7 +22,7 @@ class Store {
     });
   }
 
-  editStudent(newData: IStudent) {
+  editStudent(newData: IStudent): void {
     this.students[
       this.students.findIndex((student) => student.id === newData.id)
     ] = newData;
@@ -32,7 +32,7 @@ class Store {
     ] = newData;
   }
 
-  deleteStudent(studentId: number) {
+  deleteStudent(studentId: number): void {
     const filteredStudents = this.students.filter(
       (student) => student.id !== studentId
     );
@@ -47,9 +47,11 @@ class Store {
     this.filtered.push(...filteredStudents2);
   }
 
-  searchStudents(searchedValue: string) {
+  searchStudents(searchedValue: string): void {
     const filteredStudents = this.students.filter(
-      (student) => student.name.toLowerCase().indexOf(searchedValue) > -1
+      (student) =>
+        student.name.toLowerCase().includes(searchedValue.toLowerCase()) ||
+        student.class.toLowerCase().includes(searchedValue.toLowerCase())
     );
     this.filtered.length = 0;
     this.filtered.push(...filteredStudents);

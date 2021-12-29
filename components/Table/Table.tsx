@@ -2,6 +2,7 @@ import React from "react";
 import { IStudent, IExchangeStudent } from "../../store/students";
 import Modal from "../Modal/Modal";
 import styles from "./Table.module.scss";
+import formatDate from "date-fns/format";
 
 export interface IHeader {
   displayName: string;
@@ -14,7 +15,7 @@ interface Props {
   className?: string;
 }
 
-export const Table: React.FC<Props> = ({ header, body, className }) => {
+export const Table = ({ header, body, className }: Props): JSX.Element => {
   const renderHeader = () =>
     header.map((headerItem, index) => (
       <th key={index}>{headerItem.displayName}</th>
@@ -29,9 +30,19 @@ export const Table: React.FC<Props> = ({ header, body, className }) => {
       <tr key={index} className={styles.body}>
         {Object.keys(row)
           .filter((value: string) => checkIfInHeader(value))
-          .map((key: string) => (
-            <td key={key}>{row[key]}</td>
-          ))}
+          .map((key: string) => {
+            console.log("dhgddj");
+            return (
+              <td
+                key={key}
+                colSpan={
+                  key === "gender" && row.hasOwnProperty("extId") ? 3 : 1
+                }
+              >
+                {key === "birthdate" ? "aaaa" : row[key]}
+              </td>
+            );
+          })}
         {row.hasOwnProperty("id") && (
           <>
             <td>
