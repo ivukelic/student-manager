@@ -12,10 +12,9 @@ export interface IHeader {
 interface Props {
   header: IHeader[];
   body: (IStudent | IExchangeStudent)[];
-  className?: string;
 }
 
-export const Table = ({ header, body, className }: Props): JSX.Element => {
+export const Table = ({ header, body }: Props): JSX.Element => {
   const renderHeader = () =>
     header.map((headerItem, index) => (
       <th key={index}>{headerItem.displayName}</th>

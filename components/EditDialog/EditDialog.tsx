@@ -78,22 +78,30 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
         <Selector
           name="class"
           value={studentCopy.class}
-          label="class"
+          label="Class"
           options={store.classes}
           onChange={handleClassChange}
         />
         <Selector
           name="gender"
-          label="gender"
+          label="Gender"
           options={store.gender}
           value={studentCopy.gender}
           onChange={handleGenderChange}
         />
         {isError && <div>You need to enter a name</div>}
-        <Button onClick={onClose}>Cancel</Button>
-        <Button disabled={isError} onClick={submitChange}>
-          OK
-        </Button>
+        <div className={styles.buttonContainer}>
+          <Button className={styles.cancelButton} onClick={onClose}>
+            Cancel
+          </Button>
+          <Button
+            className={styles.okButton}
+            disabled={isError}
+            onClick={submitChange}
+          >
+            OK
+          </Button>
+        </div>
       </form>
     </div>
   );

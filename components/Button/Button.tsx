@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 interface Props {
   children?: React.ReactNode;
@@ -14,7 +15,12 @@ const Button: React.FC<Props> = ({
   disabled,
 }) => {
   return (
-    <button type="button" disabled={disabled} onClick={onClick}>
+    <button
+      type="button"
+      className={classNames(className)}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

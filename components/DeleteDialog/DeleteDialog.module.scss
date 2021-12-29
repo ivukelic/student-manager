@@ -1,9 +1,9 @@
 .container {
   display: grid;
   grid-gap: 8px;
-  width: min-content;
-  text-align: left;
   margin: auto;
+  width: fit-content;
+  text-align: center;
 }
 
 .buttonContainer {
@@ -11,17 +11,19 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 8px;
   margin: 16px 0 19px;
+  width: max-content;
+  justify-self: center;
 }
 
-.okButton {
-  background-color: #4792f7;
-  border: 1px solid #4792f7;
+.deleteButton {
+  background-color: #fe5656;
+  border: 1px solid #fe5656;
   color: white;
   border-radius: 2px;
-  padding: 4px 0px;
+  padding: 4px 12px;
   cursor: pointer;
   &:hover {
-    background-color: #217cf3;
+    background-color: #e01a1a;
   }
 }
 
@@ -30,10 +32,14 @@
   border: 1px solid #686869;
   color: #686869;
   border-radius: 2px;
-  padding: 4px 0px;
+  padding: 4px 12px;
   cursor: pointer;
   &:hover {
     background-color: #a7a7ad;
     color: white;
   }
+}
+
+.spanText {
+  font-weight: bold;
 }
