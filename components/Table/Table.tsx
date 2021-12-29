@@ -30,19 +30,16 @@ export const Table = ({ header, body, className }: Props): JSX.Element => {
       <tr key={index} className={styles.body}>
         {Object.keys(row)
           .filter((value: string) => checkIfInHeader(value))
-          .map((key: string) => {
-            console.log("dhgddj");
-            return (
-              <td
-                key={key}
-                colSpan={
-                  key === "gender" && row.hasOwnProperty("extId") ? 3 : 1
-                }
-              >
-                {key === "birthdate" ? "aaaa" : row[key]}
-              </td>
-            );
-          })}
+          .map((key: string) => (
+            <td
+              key={key}
+              colSpan={key === "gender" && row.hasOwnProperty("extId") ? 3 : 1}
+            >
+              {key === "birthdate"
+                ? formatDate(new Date(row[key]), "dd.MM.yyyy")
+                : row[key]}
+            </td>
+          ))}
         {row.hasOwnProperty("id") && (
           <>
             <td>
@@ -59,10 +56,10 @@ export const Table = ({ header, body, className }: Props): JSX.Element => {
   return (
     <div>
       <table className={styles.table}>
-        <thead className={styles.header}>
-          <tr className={styles.headerItem}>{renderHeader()}</tr>
+        <thead>
+          <tr>{renderHeader()}</tr>
         </thead>
-        <tbody className={styles.body}>{renderBody()}</tbody>
+        <tbody>{renderBody()}</tbody>
       </table>
     </div>
   );
