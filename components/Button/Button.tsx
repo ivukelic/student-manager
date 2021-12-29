@@ -8,12 +8,12 @@ interface Props {
   disabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({
+const Button = ({
   children,
   onClick,
   className,
   disabled,
-}) => {
+}: Props): JSX.Element => {
   return (
     <button
       type="button"

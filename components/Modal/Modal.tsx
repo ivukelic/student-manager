@@ -19,14 +19,14 @@ interface Props {
   student: IStudent;
 }
 
-const Modal: React.FC<Props> = ({ variant, student }) => {
+const Modal = ({ variant, student }: Props): JSX.Element => {
   const dialog = useDialogState();
 
-  const handleOnClose = () => {
+  const handleOnClose = (): void => {
     dialog.hide();
   };
 
-  const handleOnDelete = (studentId: number) => {
+  const handleOnDelete = (studentId: number): void => {
     store.deleteStudent(studentId);
     dialog.hide();
   };

@@ -11,7 +11,7 @@ interface Props {
   onClose: () => void;
 }
 
-const EditDialog: React.FC<Props> = ({ student, onClose }) => {
+const EditDialog = ({ student, onClose }: Props): JSX.Element => {
   const [studentCopy, setStudentCopy] = useState<IStudent>({ ...student });
   const [isError, setIsError] = useState<boolean>(false);
 
@@ -48,7 +48,7 @@ const EditDialog: React.FC<Props> = ({ student, onClose }) => {
     }));
   };
 
-  const submitChange = () => {
+  const submitChange = (): void => {
     if (studentCopy.name === "") {
       setIsError(true);
       return;

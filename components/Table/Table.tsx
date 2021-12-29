@@ -20,7 +20,7 @@ export const Table = ({ header, body }: Props): JSX.Element => {
       <th key={index}>{headerItem.displayName}</th>
     ));
 
-  const checkIfInHeader = (key: string) => {
+  const checkIfInHeader = (key: string): boolean => {
     return header.find((v) => v.key === key) != null;
   };
 

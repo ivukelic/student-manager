@@ -14,7 +14,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export const InputField: React.FC<Props> = ({
+export const InputField = ({
   placeholder,
   className,
   value,
@@ -24,7 +24,7 @@ export const InputField: React.FC<Props> = ({
   onBlur,
   onChange,
   onClick,
-}) => {
+}: Props): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
